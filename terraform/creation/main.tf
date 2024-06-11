@@ -24,7 +24,7 @@ resource "aws_instance" "example" {
   # }
 
   
-  
+
   
   provisioner "remote-exec" {
     inline = [
@@ -44,6 +44,7 @@ resource "aws_instance" "example" {
       "cd ~/project/test",
       "npm start"
       # Additional commands to start your application
+
 
     ]
     
