@@ -48,7 +48,7 @@ resource "aws_instance" "example" {
 
     ]
     
-    
+
     connection {
       type        = "ssh"
       user        = "ec2-user"
@@ -58,6 +58,7 @@ resource "aws_instance" "example" {
     }
   }
 }
+
 
 
 variable "private_key_base64" {
