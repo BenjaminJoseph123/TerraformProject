@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          <code>Justin and natalie Have Issues. If they had children they would be very big dumb</code> 
+            Edit <code>src/App.js</code> Jonny is losing his mind 
         </p>
         <a
           className="App-link"
@@ -23,4 +23,4 @@ function App() {
 }
 
 export default App;
-//Edit <code>src/App.js</code> Justin and natalie Have Issues. If they had children they would be very big dumb
+

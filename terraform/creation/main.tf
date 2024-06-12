@@ -4,6 +4,7 @@ provider "aws" {
   secret_key = var.aws_secret_access_key
 }
 
+
 resource "aws_instance" "example" {
   ami                    = "ami-0e731c8a588258d0d" 
   instance_type          = "t2.micro"
