@@ -6,7 +6,7 @@ on:
     branches:
       - main  
     paths:
-      - 'src/App.js'  
+      - 'src/*'  
       - '.github/workflows/edit-instance.yml'
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
             username: ec2-user
             key: ${{env.PRIVATE_KEY2}}
             script: |
-              cd project/TerraformProject
+              cd project/test
               git pull origin
         env:
           DEBUG: true
