@@ -1,5 +1,6 @@
 name: Edit EC2 Instance
 
+
 on:
   push:
     branches:
