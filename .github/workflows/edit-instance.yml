@@ -6,7 +6,7 @@ on:
     branches:
       - main  
     paths:
-      - 'src'  
+      - 'src/App.js'  
       - '.github/workflows/edit-instance.yml'
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
       - name: SSH into EC2 Instance and update folder
         uses: appleboy/ssh-action@master
         with:
-            host: 34.235.167.220
+            host: 54.167.117.10
             username: ec2-user
             key: ${{env.PRIVATE_KEY2}}
             script: |
