@@ -32,5 +32,6 @@ jobs:
             script: |
               cd project/TerraformProject
               git pull origin
+              echo hello
         env:
           DEBUG: true
