@@ -11,10 +11,9 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = ["sg-00af089bf3a97435b"]
   tags = {
     Name = "react project"
-
   }
 
-  
+
 
 
   # connection {
