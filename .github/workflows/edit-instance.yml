@@ -28,7 +28,7 @@ jobs:
         with:
             host: 54.167.117.10
             username: ec2-user
-            key: ${{ github.workspace }}/keypair.pem
+            key: ${{ github.workspace }}/Users/benja/Downloads/test-main/keypair.pem
             script: |
               cd project/TerraformProject
               git pull origin
