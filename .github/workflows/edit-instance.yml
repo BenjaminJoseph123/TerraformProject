@@ -28,7 +28,7 @@ jobs:
         with:
             host: 54.167.117.10
             username: ec2-user
-            key: ${{ github.workspace }}/terraform-key-pairs.pem
+            key: ${{env.PRIVATE_KEY2}}
             script: |
               cd project/TerraformProject
               git pull origin
