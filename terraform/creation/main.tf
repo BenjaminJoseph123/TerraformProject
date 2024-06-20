@@ -14,6 +14,8 @@ resource "aws_instance" "example" {
 
   }
 
+  
+
 
   # connection {
   #     type        = "ssh"
