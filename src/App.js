@@ -8,7 +8,9 @@ function App() {
   const handleClick = (value) => {
     if (value === '=') {
       try {
-        setResult(eval(input).toString());
+        // Replace square root and exponent notation with JavaScript-compatible functions
+        const expression = input.replace(/√/g, 'Math.sqrt').replace(/\^/g, '**');
+        setResult(eval(expression).toString());
       } catch (error) {
         setResult('Error');
       }
@@ -30,10 +32,16 @@ function App() {
           </div>
           <div className="buttons">
             <div className="row">
+              <button onClick={() => handleClick('(')}>(</button>
+              <button onClick={() => handleClick(')')}>)</button>
+              <button onClick={() => handleClick('^')}>^</button>
+              <button onClick={() => handleClick('C')} className="clear">C</button>
+            </div>
+            <div className="row">
               <button onClick={() => handleClick('7')}>7</button>
               <button onClick={() => handleClick('8')}>8</button>
               <button onClick={() => handleClick('9')}>9</button>
-              <button onClick={() => handleClick('/')}>/</button>
+              <button onClick={() => handleClick('/')}>&#247;</button>
             </div>
             <div className="row">
               <button onClick={() => handleClick('4')}>4</button>
@@ -49,12 +57,12 @@ function App() {
             </div>
             <div className="row">
               <button onClick={() => handleClick('0')}>0</button>
-              <button onClick={() => handleClick('.')}>.</button>
+              <button onClick={() => handleClick('.')}>&middot;</button>
               <button onClick={() => handleClick('=')}>=</button>
               <button onClick={() => handleClick('+')}>+</button>
             </div>
             <div className="row">
-              <button onClick={() => handleClick('C')} className="clear">C</button>
+              <button onClick={() => handleClick('Math.sqrt(')}>&radic;</button>
             </div>
           </div>
         </div>
@@ -64,6 +72,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
