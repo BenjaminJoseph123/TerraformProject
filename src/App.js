@@ -13,6 +13,7 @@ function App() {
         const calculatedResult = eval(expression).toString();
         setResult(calculatedResult);
         setLastResult(calculatedResult);
+        setInput(''); // Clear input after calculation
       } catch (error) {
         setResult('Error');
       }
@@ -77,6 +78,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
