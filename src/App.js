@@ -4,19 +4,23 @@ import './App.css';
 function App() {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
+  const [lastResult, setLastResult] = useState('');
 
   const handleClick = (value) => {
     if (value === '=') {
       try {
-        // Replace square root and exponent notation with JavaScript-compatible functions
         const expression = input.replace(/√/g, 'Math.sqrt').replace(/\^/g, '**');
-        setResult(eval(expression).toString());
+        const calculatedResult = eval(expression).toString();
+        setResult(calculatedResult);
+        setLastResult(calculatedResult);
       } catch (error) {
         setResult('Error');
       }
     } else if (value === 'C') {
       setInput('');
       setResult('');
+    } else if (value === 'Ans') {
+      setInput(input + lastResult);
     } else {
       setInput(input + value);
     }
@@ -63,6 +67,7 @@ function App() {
             </div>
             <div className="row">
               <button onClick={() => handleClick('Math.sqrt(')}>&radic;</button>
+              <button onClick={() => handleClick('Ans')} className="ans">Ans</button>
             </div>
           </div>
         </div>
@@ -72,6 +77,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
