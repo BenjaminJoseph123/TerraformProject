@@ -15,6 +15,12 @@
 .input {
   padding: 10px;
   background-color: #fff;
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.input div {
+  margin-bottom: 5px;
 }
 
 .input input {
@@ -64,6 +70,7 @@ button:hover {
 .ans:hover {
   background-color: #99ff99;
 }
+
 
 
 

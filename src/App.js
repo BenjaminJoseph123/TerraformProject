@@ -3,28 +3,33 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
-  const [result, setResult] = useState('');
-  const [lastResult, setLastResult] = useState('');
+  const [results, setResults] = useState([]);
 
   const handleClick = (value) => {
     if (value === '=') {
       try {
         const expression = input.replace(/√/g, 'Math.sqrt').replace(/\^/g, '**');
         const calculatedResult = eval(expression).toString();
-        setResult(calculatedResult);
-        setLastResult(calculatedResult);
+        setResults([...results, { input: input, result: calculatedResult }]);
         setInput(''); // Clear input after calculation
       } catch (error) {
-        setResult('Error');
+        setResults([...results, { input: input, result: 'Error' }]);
+        setInput(''); // Clear input after error
       }
     } else if (value === 'C') {
       setInput('');
-      setResult('');
     } else if (value === 'Ans') {
-      setInput(input + lastResult);
+      setInput(input + getLastResult());
     } else {
       setInput(input + value);
     }
+  };
+
+  const getLastResult = () => {
+    if (results.length > 0) {
+      return results[results.length - 1].result;
+    }
+    return '';
   };
 
   return (
@@ -32,8 +37,13 @@ function App() {
       <header className="App-header">
         <div className="calculator">
           <div className="input">
-            <input type="text" value={input} readOnly />
-            <input type="text" value={result} readOnly />
+            {results.map((item, index) => (
+              <div key={index}>
+                <div>{item.input}</div>
+                <div>{item.result}</div>
+              </div>
+            ))}
+            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
           </div>
           <div className="buttons">
             <div className="row">
@@ -78,6 +88,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
