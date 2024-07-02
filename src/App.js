@@ -51,6 +51,9 @@ function App() {
         <button type="submit">Login</button>
       </form>
 
+      {/* Additional text for registration */}
+      <p>No Account?, <a href="#">Register Here</a></p>
+
       {isLoggedIn && (
         <p className="success-message">Login successful!</p>
       )}
@@ -59,5 +62,6 @@ function App() {
 }
 
 export default App;
+
 
 
