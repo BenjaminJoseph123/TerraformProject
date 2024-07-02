@@ -1,51 +1,43 @@
 // App.js
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Selecting the login and register forms from the DOM
   const loginForm = document.getElementById('login-form');
   const registerForm = document.getElementById('register-form');
 
+  // Adding event listener for login form submission
   loginForm.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the form from submitting
+    event.preventDefault(); // Prevent the form from submitting
 
-      const username = loginForm.username.value;
-      const password = loginForm.password.value;
+    // Extracting values from login form fields
+    const username = loginForm.username.value;
+    const password = loginForm.password.value;
 
-      // Simulate login logic (replace with actual logic)
-      console.log('Login submitted with:');
-      console.log('Username:', username);
-      console.log('Password:', password);
+    // Simulating login logic (replace with actual login logic)
+    console.log('Login submitted with:');
+    console.log('Username:', username);
+    console.log('Password:', password);
 
-      // Reset the form after submission (optional)
-      loginForm.reset();
+    // Reset the form after submission (optional)
+    loginForm.reset();
   });
 
+  // Adding event listener for register form submission
   registerForm.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the form from submitting
+    event.preventDefault(); // Prevent the form from submitting
 
-      const username = registerForm.username.value;
-      const email = registerForm.email.value;
-      const password = registerForm.password.value;
+    // Extracting values from register form fields
+    const username = registerForm.username.value;
+    const email = registerForm.email.value;
+    const password = registerForm.password.value;
 
-      // Simulate registration logic (replace with actual logic)
-      console.log('Registration submitted with:');
-      console.log('Username:', username);
-      console.log('Email:', email);
-      console.log('Password:', password);
+    // Simulating registration logic (replace with actual registration logic)
+    console.log('Registration submitted with:');
+    console.log('Username:', username);
+    console.log('Email:', email);
+    console.log('Password:', password);
 
-      // Reset the form after submission (optional)
-      registerForm.reset();
+    // Reset the form after submission (optional)
+    registerForm.reset();
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
