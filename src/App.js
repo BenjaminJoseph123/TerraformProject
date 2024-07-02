@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import users from './users'; // Import the user data
 
 function App() {
   const [username, setUsername] = useState('');
@@ -9,11 +10,13 @@ function App() {
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent default form submission
 
-    // Basic login validation: check if username and password are not empty
-    if (username.trim() !== '' && password.trim() !== '') {
+    // Check if the entered username and password match any user in the list
+    const foundUser = users.find(user => user.username === username && user.password === password);
+
+    if (foundUser) {
       setIsLoggedIn(true); // Set isLoggedIn state to true for successful login
     } else {
-      alert('Please enter both username and password.'); // Show an alert for failed login (for demonstration)
+      alert('Invalid username or password. Please try again.'); // Show an alert for failed login (for demonstration)
     }
 
     // Clear username and password fields after login attempt
@@ -56,3 +59,5 @@ function App() {
 }
 
 export default App;
+
+
