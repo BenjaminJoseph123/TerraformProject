@@ -1,4 +1,5 @@
-// app.js
+// App.js
+
 document.addEventListener('DOMContentLoaded', function() {
   const loginForm = document.getElementById('login-form');
   const registerForm = document.getElementById('register-form');
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
       registerForm.reset();
   });
 });
+
 
 
 
