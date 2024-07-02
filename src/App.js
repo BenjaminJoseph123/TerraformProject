@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import users from './users'; // Import the user data
-import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
 function App() {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [buttonText, setButtonText] = useState('Register Here');
+  const [registrationStatus, setRegistrationStatus] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent default form submission
@@ -26,54 +25,54 @@ function App() {
     setPassword('');
   };
 
+  const handleButtonClick = () => {
+    setButtonText('Entering Registration'); // Change button text
+    setRegistrationStatus('Entering Registration...'); // Update registration status text
+  };
+
   return (
-    <Router>
-      <div className="container">
-        <h1>Login</h1>
-        <form id="login-form" onSubmit={handleLogin}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <br />
-          <button type="submit">Login</button>
-        </form>
+    <div className="container">
+      <h1>Login</h1>
+      <form id="login-form" onSubmit={handleLogin}>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <br />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <br />
+        <button type="submit">Login</button>
+      </form>
 
-        {/* Link to Registration Page */}
-        <p>No Account?, <Link to="/register">Register Here</Link></p>
+      {/* Button and registration status */}
+      <button onClick={handleButtonClick}>{buttonText}</button>
+      <p>{registrationStatus}</p>
 
-        {/* Display message on successful login */}
-        {isLoggedIn && (
-          <p className="success-message">Login successful!</p>
-        )}
+      {/* Additional text for registration */}
+      <p>No Account?, <a href="#">Register Here</a></p>
 
-        {/* Define routes */}
-        <Switch>
-          <Route path="/register">
-            <RegistrationPage />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+      {isLoggedIn && (
+        <p className="success-message">Login successful!</p>
+      )}
+    </div>
   );
 }
 
 export default App;
+
 
 
 
