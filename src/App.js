@@ -61,9 +61,6 @@ function App() {
       <button onClick={handleButtonClick}>{buttonText}</button>
       <p>{registrationStatus}</p>
 
-      {/* Additional text for registration */}
-      <p>No Account?, <a href="#">Register Here</a></p>
-
       {isLoggedIn && (
         <p className="success-message">Login successful!</p>
       )}
@@ -72,6 +69,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
