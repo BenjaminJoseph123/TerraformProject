@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import users from './users'; // Import the user data
 import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
@@ -74,6 +74,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
