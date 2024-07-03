@@ -62,6 +62,11 @@ function App() {
         <Link to="/register">
           <button>Register Here</button>
         </Link>
+
+        {/* Display successful login message if isLoggedIn is true */}
+        {isLoggedIn && (
+          <p className="success-message">Login successful!</p>
+        )}
       </div>
 
       {/* Routes for different pages */}
@@ -73,6 +78,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
