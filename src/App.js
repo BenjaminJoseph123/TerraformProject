@@ -1,5 +1,9 @@
+// App.js
+
 import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import users from './users'; // Import the user data
+import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
 function App() {
   const [username, setUsername] = useState('');
@@ -26,49 +30,60 @@ function App() {
   };
 
   const handleButtonClick = () => {
-    setButtonText('Entering Registration'); // Change button text
-    setRegistrationStatus('Entering Registration...'); // Update registration status text
+    // Redirect to RegistrationPage
+    // This function can be empty if the button's text change and status update are all that's needed.
   };
 
   return (
-    <div className="container">
-      <h1>Login</h1>
-      <form id="login-form" onSubmit={handleLogin}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <br />
-        <button type="submit">Login</button>
-      </form>
+    <BrowserRouter>
+      <div className="container">
+        <h1>Login</h1>
+        <form id="login-form" onSubmit={handleLogin}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit">Login</button>
+        </form>
 
-      {/* Button and registration status */}
-      <button onClick={handleButtonClick}>{buttonText}</button>
-      <p>{registrationStatus}</p>
+        {/* Button to navigate to RegistrationPage */}
+        <Link to="/register">
+          <button>{buttonText}</button>
+        </Link>
 
-      {isLoggedIn && (
-        <p className="success-message">Login successful!</p>
-      )}
-    </div>
+        <p>{registrationStatus}</p>
+
+        {isLoggedIn && (
+          <p className="success-message">Login successful!</p>
+        )}
+
+        {/* Define Route for RegistrationPage */}
+        <Switch>
+          <Route path="/register" component={RegistrationPage} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
 
 
 
