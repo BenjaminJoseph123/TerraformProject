@@ -30,51 +30,50 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <Routes>
-          {/* Route for login page */}
-          <Route exact path="/">
-            <div>
-              <h1>Login</h1>
-              <form id="login-form" onSubmit={handleLogin}>
-                <label htmlFor="username">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-                <br />
-                <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <br />
-                <button type="submit">Login</button>
-              </form>
-              
-              {/* Button to navigate to RegistrationPage */}
-              <Link to="/register">
-                <button>Register Here</button>
-              </Link>
-            </div>
-          </Route>
+        {/* Header */}
+        <h1>Login</h1>
 
-          {/* Route for registration page */}
-          <Route path="/register" element={<RegistrationPage />} />
-        </Routes>
+        {/* Login Form */}
+        <form id="login-form" onSubmit={handleLogin}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit">Login</button>
+        </form>
+
+        {/* Button to navigate to RegistrationPage */}
+        <Link to="/register">
+          <button>Register Here</button>
+        </Link>
       </div>
+
+      {/* Routes for different pages */}
+      <Routes>
+        <Route path="/register" element={<RegistrationPage />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+
 
 
 
