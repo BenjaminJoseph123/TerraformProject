@@ -1,7 +1,7 @@
 // App.js
 
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import users from './users'; // Import the user data
 import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
@@ -73,16 +73,15 @@ function App() {
           <p className="success-message">Login successful!</p>
         )}
 
-        {/* Define Route for RegistrationPage */}
-        <Switch>
-          <Route path="/register" component={RegistrationPage} />
-        </Switch>
+        {/* Route for RegistrationPage */}
+        <Route path="/register" component={RegistrationPage} />
       </div>
     </BrowserRouter>
   );
 }
 
 export default App;
+
 
 
 
