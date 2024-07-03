@@ -1,7 +1,7 @@
 // App.js
 
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Import necessary components
 import users from './users'; // Import the user data
 import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <Router>
       <div className="container">
         <h1>Login</h1>
         <form id="login-form" onSubmit={handleLogin}>
@@ -73,14 +73,17 @@ function App() {
           <p className="success-message">Login successful!</p>
         )}
 
-        {/* Route for RegistrationPage */}
-        <Route path="/register" component={RegistrationPage} />
+        {/* Routes for different pages */}
+        <Routes>
+          <Route path="/register" element={<RegistrationPage />} />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
 export default App;
+
 
 
 
