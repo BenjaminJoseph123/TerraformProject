@@ -44,6 +44,12 @@ function RegistrationPage() {
     setRegistrationStatus('Registration successful!');
   };
 
+  const handleReturnToLogin = () => {
+    // Logic to handle returning to login page
+    // Example: Redirect to the login page or set state to show login form again
+    setRegistrationStatus(''); // Clear registration status
+  };
+
   return (
     <div className="container">
       <h1>Registration Page</h1>
@@ -81,8 +87,14 @@ function RegistrationPage() {
         <button type="submit">Register</button>
       </form>
       {registrationStatus && <p>{registrationStatus}</p>}
+      
+      {/* Show "Return to Login?" button after successful registration */}
+      {registrationStatus === 'Registration successful!' && (
+        <button onClick={handleReturnToLogin}>Return to Login?</button>
+      )}
     </div>
   );
 }
 
 export default RegistrationPage;
+
