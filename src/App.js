@@ -1,7 +1,7 @@
 // App.js
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Import necessary components
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import users from './users'; // Import the user data
 import RegistrationPage from './RegistrationPage'; // Import the RegistrationPage component
 
@@ -9,11 +9,9 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [buttonText, setButtonText] = useState('Register Here');
-  const [registrationStatus, setRegistrationStatus] = useState('');
 
   const handleLogin = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     // Check if the entered username and password match any user in the list
     const foundUser = users.find(user => user.username === username && user.password === password);
@@ -27,11 +25,6 @@ function App() {
     // Clear username and password fields after login attempt
     setUsername('');
     setPassword('');
-  };
-
-  const handleButtonClick = () => {
-    // Redirect to RegistrationPage
-    // This function can be empty if the button's text change and status update are all that's needed.
   };
 
   return (
@@ -64,14 +57,8 @@ function App() {
 
         {/* Button to navigate to RegistrationPage */}
         <Link to="/register">
-          <button>{buttonText}</button>
+          <button>Register Here</button>
         </Link>
-
-        <p>{registrationStatus}</p>
-
-        {isLoggedIn && (
-          <p className="success-message">Login successful!</p>
-        )}
 
         {/* Routes for different pages */}
         <Routes>
@@ -83,6 +70,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
