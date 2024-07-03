@@ -1,12 +1,86 @@
 // RegistrationPage.js
 
-import React from 'react';
+import React, { useState } from 'react';
+import users from './users'; // Import the user data
 
 function RegistrationPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [registrationStatus, setRegistrationStatus] = useState('');
+
+  const handleRegistration = (event) => {
+    event.preventDefault();
+
+    // Validation
+    if (!username.trim() || !password.trim() || !confirmPassword.trim()) {
+      setRegistrationStatus('Please fill out all fields.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setRegistrationStatus('Passwords do not match. Please try again.');
+      return;
+    }
+
+    // Check if the username already exists
+    const isExistingUser = users.some(user => user.username === username);
+
+    if (isExistingUser) {
+      setRegistrationStatus('Username already exists. Please choose a different one.');
+      return;
+    }
+
+    // Add new user to the users array
+    const newUser = { username, password };
+    users.push(newUser);
+
+    // Clear form fields
+    setUsername('');
+    setPassword('');
+    setConfirmPassword('');
+
+    // Update registration status
+    setRegistrationStatus('Registration successful!');
+  };
+
   return (
     <div className="container">
       <h1>Registration Page</h1>
-      <p>This is the registration page content.</p>
+      <form onSubmit={handleRegistration}>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <br />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <br />
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <br />
+        <button type="submit">Register</button>
+      </form>
+      {registrationStatus && <p>{registrationStatus}</p>}
     </div>
   );
 }
