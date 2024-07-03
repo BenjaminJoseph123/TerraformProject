@@ -47,7 +47,7 @@ resource "aws_instance" "example" {
 
     ]
 
-    
+  
     connection {
       type        = "ssh"
       user        = "ec2-user"
