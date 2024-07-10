@@ -1,6 +1,7 @@
 // RegistrationPage.js
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
 import users from './users'; // Import the user data
 
 function RegistrationPage() {
@@ -8,6 +9,7 @@ function RegistrationPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [registrationStatus, setRegistrationStatus] = useState('');
+  const history = useHistory(); // Initialize useHistory for navigation
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -31,7 +33,7 @@ function RegistrationPage() {
       return;
     }
 
-    // Add new user to the users array
+    // Add new user to the users array (for demonstration; in a real app, you'd use a server or database)
     const newUser = { username, password };
     users.push(newUser);
 
@@ -45,9 +47,11 @@ function RegistrationPage() {
   };
 
   const handleReturnToLogin = () => {
-    // Logic to handle returning to login page
-    // Example: Redirect to the login page or set state to show login form again
-    setRegistrationStatus(''); // Clear registration status
+    // Clear registration status
+    setRegistrationStatus('');
+    
+    // Redirect to the login page
+    history.push('/'); // Assuming your login page route is '/'
   };
 
   return (
@@ -97,4 +101,3 @@ function RegistrationPage() {
 }
 
 export default RegistrationPage;
-
