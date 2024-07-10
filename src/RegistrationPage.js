@@ -1,15 +1,13 @@
 // RegistrationPage.js
 
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
 import users from './users'; // Import the user data
 
-function RegistrationPage() {
+function RegistrationPage({ history }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [registrationStatus, setRegistrationStatus] = useState('');
-  const history = useHistory(); // Initialize useHistory for navigation
 
   const handleRegistration = (event) => {
     event.preventDefault();
