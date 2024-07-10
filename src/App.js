@@ -9,7 +9,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLogin, setShowLogin] = useState(true); // Initialize showLogin to false
+  const [showLogin, setShowLogin] = useState(false); // Initialize showLogin to false
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -60,10 +60,7 @@ function App() {
               <button type="submit">Login</button>
             </form>
             {/* Button to navigate to RegistrationPage */}
-            <Link
-              to="/register"
-              onClick={() => setShowLogin(false)} // Set showLogin to false when registration link is clicked
-            >
+            <Link to="/register">
               <button>Register Here</button>
             </Link>
           </>
@@ -84,6 +81,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
