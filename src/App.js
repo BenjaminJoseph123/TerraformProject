@@ -9,7 +9,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); // Initialize showLogin to false
+  const [showLogin, setShowLogin] = useState(true); // Initialize showLogin to false
 
   const handleLogin = (event) => {
     event.preventDefault();
