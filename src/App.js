@@ -60,7 +60,10 @@ function App() {
               <button type="submit">Login</button>
             </form>
             {/* Button to navigate to RegistrationPage */}
-            <Link to="/register">
+            <Link
+              to="/register"
+              onClick={() => setShowLogin(false)} // Set showLogin to false when registration link is clicked
+            >
               <button>Register Here</button>
             </Link>
           </>
