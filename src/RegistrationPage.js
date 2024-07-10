@@ -1,13 +1,14 @@
 // RegistrationPage.js
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import users from './users'; // Import the user data
 
-function RegistrationPage({ history }) {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [registrationStatus, setRegistrationStatus] = React.useState('');
+function RegistrationPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [registrationStatus, setRegistrationStatus] = useState('');
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -42,14 +43,6 @@ function RegistrationPage({ history }) {
 
     // Update registration status
     setRegistrationStatus('Registration successful!');
-  };
-
-  const handleReturnToLogin = () => {
-    // Clear registration status
-    setRegistrationStatus('');
-
-    // Redirect to the login page
-    history.push('/'); // Assuming your login page route is '/'
   };
 
   return (
@@ -89,13 +82,10 @@ function RegistrationPage({ history }) {
         <button type="submit">Register</button>
       </form>
       {registrationStatus && <p>{registrationStatus}</p>}
-
-      {/* Show "Return to Login?" button after successful registration */}
-      {registrationStatus === 'Registration successful!' && (
-        <button onClick={handleReturnToLogin}>Return to Login?</button>
-      )}
+      <Link to="/">Return to Login</Link>
     </div>
   );
 }
 
 export default RegistrationPage;
+
