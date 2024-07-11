@@ -59,10 +59,12 @@ function LoginPage() {
             <br />
             <button type="submit">Login</button>
           </form>
-          <a href="/register">
-            <button>Register Here</button>
-          </a>
-        </>
+          <div className="centered-container">
+            <a href="/register">
+              <button>Register Here</button>
+            </a>
+          </div>  
+          </>
       )}
     </div>
   );
