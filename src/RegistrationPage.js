@@ -83,7 +83,9 @@ function RegistrationPage() {
         <button type="submit">Register</button>
       </form>
       {registrationStatus && <p>{registrationStatus}</p>}
-      <Link to="/">Return to Login</Link>
+      <Link to="/" className="return-button">
+        <button>Return to Login</button>
+      </Link>
     </div>
   );
 }
