@@ -1,9 +1,11 @@
 // LoginPage.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'; // Import useHistory hook
 import users from './users'; // Import the user data
 
 function LoginPage() {
+  const history = useHistory(); // Initialize useHistory hook
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +27,10 @@ function LoginPage() {
     // Clear username and password fields after login attempt
     setUsername('');
     setPassword('');
+  };
+
+  const handleRegisterClick = () => {
+    history.push('/register'); // Navigate to the '/register' route
   };
 
   return (
@@ -58,7 +64,7 @@ function LoginPage() {
             <br />
             <button type="submit">Login</button>
           </form>
-          <Link to="/register">Register Here</Link>
+          <button onClick={handleRegisterClick}>Register Here</button>
         </>
       )}
     </div>
@@ -66,4 +72,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
