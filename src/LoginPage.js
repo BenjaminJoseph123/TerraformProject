@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import users from './users'; // Import the user data
+import './LoginPage.css';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
