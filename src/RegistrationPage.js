@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import users from './users'; // Import the user data
+import axios from 'axios'; // Import axios for making HTTP requests
 import './LoginPage.css'
 
 function RegistrationPage() {
@@ -11,7 +11,7 @@ function RegistrationPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [registrationStatus, setRegistrationStatus] = useState('');
 
-  const handleRegistration = (event) => {
+  const handleRegistration = async (event) => {
     event.preventDefault();
 
     // Validation
@@ -25,25 +25,28 @@ function RegistrationPage() {
       return;
     }
 
-    // Check if the username already exists
-    const isExistingUser = users.some(user => user.username === username);
+    try {
+      // Make a POST request to backend to register user
+      const response = await axios.post('http://localhost:5000/api/register', {
+        username,
+        password
+      });
 
-    if (isExistingUser) {
-      setRegistrationStatus('Username already exists. Please choose a different one.');
-      return;
+      // Check if registration was successful based on response status
+      if (response.status === 201) {
+        setRegistrationStatus('Registration successful!');
+      } else {
+        setRegistrationStatus('Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setRegistrationStatus('Error during registration. Please try again later.');
     }
-
-    // Add new user to the users array (for demonstration; in a real app, you'd use a server or database)
-    const newUser = { username, password };
-    users.push(newUser);
 
     // Clear form fields
     setUsername('');
     setPassword('');
     setConfirmPassword('');
-
-    // Update registration status
-    setRegistrationStatus('Registration successful!');
   };
 
   return (
@@ -93,4 +96,5 @@ function RegistrationPage() {
 }
 
 export default RegistrationPage;
+
 
