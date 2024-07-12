@@ -1,6 +1,9 @@
+// LoginPage.js
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios for making HTTP requests
+//import { Link } from 'react-router-dom';
+import users from './users'; // Import the user data
 import './LoginPage.css';
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -8,32 +11,28 @@ function LoginPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
 
-  const handleLogin = async (event) => {
+
+  const handleLogin = (event) => {
     event.preventDefault();
 
-    try {
-      // Make a POST request to backend to authenticate user
-      const response = await axios.post('http://localhost:5000/api/login', {
-        username,
-        password
-      });
 
-      // Check if login was successful based on response status
-      if (response.status === 200) {
-        setIsLoggedIn(true); // Set isLoggedIn state to true for successful login
-        setLoginError(''); // Clear any previous login error messages
-      } else {
-        setLoginError('Invalid username or password. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      setLoginError('Error during login. Please try again later.');
+    // Find the user in the users array
+    const foundUser = users.find(user => user.username === username && user.password === password);
+
+
+    if (foundUser) {
+      setIsLoggedIn(true); // Set isLoggedIn state to true for successful login
+      setLoginError(''); // Clear any previous login error messages
+    } else {
+      setLoginError('Invalid username or password. Please try again.');
     }
+
 
     // Clear username and password fields after login attempt
     setUsername('');
     setPassword('');
   };
+
 
   return (
     <div className="container">
@@ -71,11 +70,12 @@ function LoginPage() {
               <button>Register Here</button>
             </a>
           </div>  
-        </>
+          </>
       )}
     </div>
   );
 }
+
 
 export default LoginPage;
 
