@@ -21,6 +21,7 @@ resource "aws_instance" "example" {
   #     host        = self.public_ip
   # }
 
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
