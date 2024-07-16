@@ -20,7 +20,7 @@ resource "aws_instance" "example" {
   #     # private_key = var.private_key_base64
   #     host        = self.public_ip
   # }
-  
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
