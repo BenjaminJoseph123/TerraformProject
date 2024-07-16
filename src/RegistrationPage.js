@@ -62,50 +62,50 @@ function RegistrationPage() {
 
 
   return (
-    <div className="container">
-      <h1>Registration Page</h1>
-      <form onSubmit={handleRegistration}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <br />
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-        <br />
-        <button type="submit">Register</button>
-      </form>
-      {registrationStatus && <p>{registrationStatus}</p>}
-      <div className="centered-container">
-        <Link to="/" className="return-button">
-          <button>Return to Login</button>
-        </Link>
+      <div className="container">
+        <h1>Registration Page</h1>
+        <form onSubmit={handleRegistration}>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+         />
+         <br />
+         <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+           type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+           value={confirmPassword}
+           onChange={(e) => setConfirmPassword(e.target.value)}
+           required
+          />
+          <br />
+         <button type="submit">Register</button>
+        </form>
+        {registrationStatus && <p>{registrationStatus}</p>}
+        <div className="centered-container">
+         <Link to="/" className="return-button">
+            <button>Return to Login</button>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default RegistrationPage;
