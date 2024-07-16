@@ -50,11 +50,6 @@ function RegistrationPage() {
     setRegistrationStatus('Error during registration. Please try again later.');
 
 
-    // Add new user to the users array (for demonstration; in a real app, you'd use a server or database)
-    const newUser = { username, password };
-    users.push(newUser);
-
-
     // Clear form fields
     setUsername('');
     setPassword('');
