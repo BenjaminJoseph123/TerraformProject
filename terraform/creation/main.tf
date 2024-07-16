@@ -39,8 +39,9 @@ resource "aws_instance" "example" {
       "npm install react-router-dom",
       "npm install axios",
       "cd ~/project/TerraformProject",
-      "node server.js",
-      "npm start"
+      "npm start",
+      "cd ~/project/TerraformProject/backend",
+      "node server.js"
       # Additional commands to start your application
 
 
