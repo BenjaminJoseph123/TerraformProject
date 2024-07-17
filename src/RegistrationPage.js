@@ -1,5 +1,5 @@
-// RegistrationPage.js
 import React, { useState } from 'react';
+import { users } from './users'; // Import the users array from users.js
 
 function RegistrationPage({ addUser, history }) {
   const [username, setUsername] = useState('');
@@ -97,6 +97,7 @@ function RegistrationPage({ addUser, history }) {
 }
 
 export default RegistrationPage;
+
 
 
 
