@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import { users } from './users'; // Import the users array from users.js
+// RegistrationPage.js
 
-function RegistrationPage({ addUser, history }) {
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios'; // Import axios for making HTTP requests
+import './LoginPage.css';
+
+function RegistrationPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [registrationStatus, setRegistrationStatus] = useState('');
 
-  const handleRegistration = (event) => {
+  const handleRegistration = async (event) => {
     event.preventDefault();
 
     // Validation
@@ -21,33 +26,28 @@ function RegistrationPage({ addUser, history }) {
       return;
     }
 
-    // Check if the username already exists
-    const isExistingUser = users.some(user => user.username === username);
-
-    if (isExistingUser) {
-      setRegistrationStatus('Username already exists. Please choose a different one.');
-      return;
-    }
-
-    // Add new user to the users array using the addUser function passed as prop
     try {
-      addUser(username, password);
-      // Clear form fields
-      setUsername('');
-      setPassword('');
-      setConfirmPassword('');
-      // Update registration status
-      setRegistrationStatus('Registration successful!');
-    } catch (error) {
-      setRegistrationStatus(error.message); // Display specific error message from addUser function
-    }
-  };
+      // Make a POST request to backend to register user
+      const response = await axios.post('http://localhost:5000/api/register', {
+        username,
+        password
+      });
 
-  const handleReturnToLogin = () => {
-    // Clear registration status
-    setRegistrationStatus('');
-    // Redirect to the login page
-    history.push('/'); // Assuming your login page route is '/'
+      // Check if registration was successful based on response status
+      if (response.status === 201) {
+        setRegistrationStatus('Registration successful!');
+      } else {
+        setRegistrationStatus('Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setRegistrationStatus('Error during registration. Please try again later.');
+    }
+
+    // Clear form fields
+    setUsername('');
+    setPassword('');
+    setConfirmPassword('');
   };
 
   return (
@@ -87,11 +87,11 @@ function RegistrationPage({ addUser, history }) {
         <button type="submit">Register</button>
       </form>
       {registrationStatus && <p>{registrationStatus}</p>}
-
-      {/* Show "Return to Login?" button after successful registration */}
-      {registrationStatus === 'Registration successful!' && (
-        <button onClick={handleReturnToLogin}>Return to Login?</button>
-      )}
+      <div className="centered-container">
+        <Link to="/" className="return-button">
+          <button>Return to Login</button>
+        </Link>
+      </div>
     </div>
   );
 }
