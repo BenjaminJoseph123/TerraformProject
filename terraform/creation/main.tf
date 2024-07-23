@@ -28,7 +28,7 @@ resource "aws_instance" "example" {
       "cd project",
       "sudo yum install git -y",
       "git clone https://github.com/BenjaminJoseph123/TerraformProject",
-      "cd react-aws-terraform-project",
+      "cd TerraformProject",
       "sudo yum install -y nodejs npm",
       "node --version",
       "npm --version", 
