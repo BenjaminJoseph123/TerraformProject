@@ -40,6 +40,7 @@ resource "aws_instance" "example" {
       "cd ~/project/TerraformProject",
       "npm start",
       "cd ~/project/TerraformProject/backend",
+      "npm install cors",
       "node server.js"
       # Additional commands to start your application
     ]
