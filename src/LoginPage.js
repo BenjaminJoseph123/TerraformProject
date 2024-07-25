@@ -1,7 +1,7 @@
 // LoginPage.js
 import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
-import axios from 'axios'; // Import axios for making HTTP requests
+import users from './users'; // Import the user data
 import './LoginPage.css';
 
 
@@ -12,34 +12,27 @@ function LoginPage() {
   const [loginError, setLoginError] = useState('');
 
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
+
     // Find the user in the users array
-    try {
-      // Make a POST request to backend to authenticate user
-      const response = await axios.post('http://localhost:5000/api/login', {
-        username,
-        password
-      });
+    const foundUser = users.find(user => user.username === username && user.password === password);
 
 
-    // Check if login was successful based on response status
-    if (response.status === 200) {
+    if (foundUser) {
       setIsLoggedIn(true); // Set isLoggedIn state to true for successful login
       setLoginError(''); // Clear any previous login error messages
     } else {
       setLoginError('Invalid username or password. Please try again.');
     }
-  } catch (error) {
-    console.error('Error during login:', error);
-    setLoginError('Error during login. Please try again later.');
-    }
+
 
     // Clear username and password fields after login attempt
     setUsername('');
     setPassword('');
   };
+
 
   return (
     <div className="container">
@@ -75,13 +68,14 @@ function LoginPage() {
           <div className="centered-container">
             <a href="/register">
               <button>Register Here</button>
-              </a>
-              </div> 
+            </a>
+          </div>  
           </>
-        )}
+      )}
     </div>
   );
 }
+
 
 export default LoginPage;
 
