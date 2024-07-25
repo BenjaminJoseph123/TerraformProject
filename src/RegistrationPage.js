@@ -13,8 +13,13 @@ function RegistrationPage() {
     event.preventDefault();
 
     // Validation
-    if (!username.trim() || !password.trim() || !confirmPassword.trim()) {
-      setRegistrationStatus('Please fill out all fields.');
+    if (username.trim().length < 3) {
+      setRegistrationStatus('Username must be at least 3 characters long.');
+      return;
+    }
+
+    if (!password.trim() || !confirmPassword.trim()) {
+      setRegistrationStatus('Please fill out all password fields.');
       return;
     }
 
@@ -90,6 +95,7 @@ function RegistrationPage() {
 }
 
 export default RegistrationPage;
+
 
 
 
