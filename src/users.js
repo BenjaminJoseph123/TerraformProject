@@ -1,24 +1,24 @@
-const fs = require('fs');
-const path = require('path');
-
 let users = [];
 
-// Load users data from file on module load
+// Load users data from localStorage on module load
 const loadData = () => {
   try {
-    const data = fs.readFileSync(path.resolve(__dirname, 'users.json'));
-    users = JSON.parse(data);
+    const usersData = localStorage.getItem('users');
+    if (usersData) {
+      users = JSON.parse(usersData);
+    } else {
+      users = [];
+    }
   } catch (error) {
-    console.error('Error reading users data:', error);
+    console.error('Error loading users data:', error);
     users = [];
   }
 };
 
-// Function to save users data to file
+// Function to save users data to localStorage
 const saveData = () => {
   try {
-    const data = JSON.stringify(users, null, 2);
-    fs.writeFileSync(path.resolve(__dirname, 'users.json'), data);
+    localStorage.setItem('users', JSON.stringify(users));
   } catch (error) {
     console.error('Error saving users data:', error);
   }
@@ -28,13 +28,14 @@ const saveData = () => {
 const addUser = (username, password) => {
   const newUser = { username, password };
   users.push(newUser);
-  saveData(); // Save updated users data to file
+  saveData(); // Save updated users data to localStorage
 };
 
 // Load initial users data on module load
 loadData();
 
 module.exports = { users, addUser };
+
 
 
   
