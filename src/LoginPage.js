@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isUsernameTaken } from './users'; // Import the isUsernameTaken function
+import { users } from './users'; // Import users array correctly
 import './LoginPage.css';
 
 function LoginPage() {
@@ -13,10 +13,9 @@ function LoginPage() {
     event.preventDefault();
 
     // Check if the username exists and password matches
-    const userExists = isUsernameTaken(username);
-    const isValidUser = userExists && users.some(user => user.username === username && user.password === password);
+    const userExists = users.some(user => user.username === username && user.password === password);
 
-    if (isValidUser) {
+    if (userExists) {
       setIsLoggedIn(true);
       setLoginError('');
     } else {
@@ -70,6 +69,7 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
 
 
 
