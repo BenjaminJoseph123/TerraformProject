@@ -4,6 +4,8 @@ import { addUser, isUsernameTaken } from './users'; // Import addUser and isUser
 import './LoginPage.css';
 
 function RegistrationPage() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -15,6 +17,11 @@ function RegistrationPage() {
     // Validation
     if (username.trim().length < 3) {
       setRegistrationStatus('Username must be at least 3 characters long.');
+      return;
+    }
+
+    if (!firstName.trim() || !lastName.trim()) {
+      setRegistrationStatus('Please provide both first and last names.');
       return;
     }
 
@@ -37,9 +44,17 @@ function RegistrationPage() {
     }
 
     // Add new user to the users array
-    addUser(username, password);
+    const newUser = {
+      username,
+      password,
+      firstName,
+      lastName,
+    };
+    addUser(newUser);
 
     // Clear form fields
+    setFirstName('');
+    setLastName('');
     setUsername('');
     setPassword('');
     setConfirmPassword('');
@@ -52,6 +67,26 @@ function RegistrationPage() {
     <div className="container">
       <h1>Registration Page</h1>
       <form onSubmit={handleRegistration}>
+        <label htmlFor="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+        <br />
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+        <br />
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -95,6 +130,7 @@ function RegistrationPage() {
 }
 
 export default RegistrationPage;
+
 
 
 
