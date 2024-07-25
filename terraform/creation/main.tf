@@ -45,7 +45,6 @@ resource "aws_instance" "example" {
       # Additional commands to start your application
     ]
 
-  
     connection {
       type        = "ssh"
       user        = "ec2-user"
