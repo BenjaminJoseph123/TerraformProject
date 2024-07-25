@@ -31,10 +31,16 @@ const addUser = (username, password) => {
   saveData(); // Save updated users data to localStorage
 };
 
+// Function to check if a username already exists
+const isUsernameTaken = (username) => {
+  return users.some(user => user.username === username);
+};
+
 // Load initial users data on module load
 loadData();
 
-module.exports = { users, addUser };
+export { users, addUser, isUsernameTaken };
+
 
 
 

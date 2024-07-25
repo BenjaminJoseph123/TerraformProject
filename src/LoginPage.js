@@ -1,9 +1,7 @@
-// LoginPage.js
 import React, { useState } from 'react';
-//import { Link } from 'react-router-dom';
-import users from './users'; // Import the user data
+import { Link } from 'react-router-dom';
+import { isUsernameTaken } from './users'; // Import the isUsernameTaken function
 import './LoginPage.css';
-
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -11,28 +9,23 @@ function LoginPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
 
-
   const handleLogin = (event) => {
     event.preventDefault();
 
+    // Check if the username exists and password matches
+    const userExists = isUsernameTaken(username);
+    const isValidUser = userExists && users.some(user => user.username === username && user.password === password);
 
-    // Find the user in the users array
-    const foundUser = users.find(user => user.username === username && user.password === password);
-
-
-    if (foundUser) {
-      setIsLoggedIn(true); // Set isLoggedIn state to true for successful login
-      setLoginError(''); // Clear any previous login error messages
+    if (isValidUser) {
+      setIsLoggedIn(true);
+      setLoginError('');
     } else {
       setLoginError('Invalid username or password. Please try again.');
     }
 
-
-    // Clear username and password fields after login attempt
     setUsername('');
     setPassword('');
   };
-
 
   return (
     <div className="container">
@@ -66,17 +59,17 @@ function LoginPage() {
             <button type="submit">Login</button>
           </form>
           <div className="centered-container">
-            <a href="/register">
+            <Link to="/register">
               <button>Register Here</button>
-            </a>
-          </div>  
-          </>
+            </Link>
+          </div>
+        </>
       )}
     </div>
   );
 }
 
-
 export default LoginPage;
+
 
 
