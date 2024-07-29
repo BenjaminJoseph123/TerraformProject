@@ -6,14 +6,14 @@ app.use(express.json()); // Required to parse JSON body
 
 // POST endpoint for registration
 app.post('/register', (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, lastName, username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required.' });
+  if (!firstName || !lastName || !username || !password) {
+    return res.status(400).json({ error: 'All fields are required.' });
   }
 
   // Add user to the users list
-  addUser(username, password);
+  addUser(firstName, lastName, username, password);
 
   res.status(200).json({ message: 'User registered successfully.' });
 });

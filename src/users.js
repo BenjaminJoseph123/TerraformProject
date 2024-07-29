@@ -25,8 +25,8 @@ const saveData = () => {
 };
 
 // Function to add a new user
-const addUser = (username, password) => {
-  const newUser = { username, password };
+const addUser = (firstName, lastName, username, password) => {
+  const newUser = { firstName, lastName, username, password };
   users.push(newUser);
   saveData(); // Save updated users data to localStorage
 };
@@ -40,7 +40,6 @@ const isUsernameTaken = (username) => {
 loadData();
 
 export { users, addUser, isUsernameTaken };
-
 
 
 
