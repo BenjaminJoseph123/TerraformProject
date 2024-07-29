@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import './Dashboard.css'; // Make sure to include styles for your components
 
 // Import images
-import ZagIcon from "C:\Users\benja\Downloads\test-main\test-main\src\ZagIcon.png"; // Adjust the path as needed
-import MelIcon from "C:\Users\benja\Downloads\test-main\test-main\src\MelIcon.png"; // Adjust the path as needed
+import ZagIcon from './ZagIcon.png'; // Correct path if in the same directory
+import MelIcon from './MelIcon.png'; // Correct path if in the same directory
 
 function Dashboard() {
   const location = useLocation();
