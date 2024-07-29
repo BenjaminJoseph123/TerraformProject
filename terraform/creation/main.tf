@@ -13,6 +13,7 @@ resource "aws_instance" "example" {
     Name = "react project"
   }
 
+  
   # connection {
   #     type        = "ssh"
   #     user        = "ec2-user"
