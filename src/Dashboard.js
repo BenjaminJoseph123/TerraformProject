@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './Dashboard.css'; // Ensure styles are correctly applied
 
 // Import images
@@ -25,14 +25,18 @@ function Dashboard() {
         <div className="popup">
           <h2>Select a Game</h2>
           <div className="popup-button-group">
-            <button className="popup-button">
-              Hades
-              <img src={ZagIcon} alt="Hades Icon" className="popup-image" />
-            </button>
-            <button className="popup-button">
-              Hades 2
-              <img src={MelIcon} alt="Hades 2 Icon" className="popup-image" />
-            </button>
+            <Link to="/zag-planner" className="popup-button-link">
+              <button className="popup-button">
+                Hades
+                <img src={ZagIcon} alt="Hades Icon" className="popup-image" />
+              </button>
+            </Link>
+            <Link to="/mel-planner" className="popup-button-link">
+              <button className="popup-button">
+                Hades 2
+                <img src={MelIcon} alt="Hades 2 Icon" className="popup-image" />
+              </button>
+            </Link>
           </div>
         </div>
       )}
@@ -41,5 +45,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
 
 
