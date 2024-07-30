@@ -1,0 +1,19 @@
+/* ZagPlanner.css */
+.zag-planner-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .image-row {
+    display: flex;
+    flex-wrap: nowrap; /* Ensures images are in a single row */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    justify-content: center; /* Centers images horizontally */
+  }
+  
+  .zag-image {
+    margin: 5px; /* Adds space between images */
+    max-width: 150px; /* Adjust as needed */
+    height: auto; /* Maintains aspect ratio */
+  }
+  
