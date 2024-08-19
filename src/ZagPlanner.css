@@ -1,19 +1,78 @@
-/* ZagPlanner.css */
+/* src/ZagPlanner.css */
 .zag-planner-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .image-row {
-    display: flex;
-    flex-wrap: nowrap; /* Ensures images are in a single row */
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
-    justify-content: center; /* Centers images horizontally */
-  }
-  
-  .zag-image {
-    margin: 5px; /* Adds space between images */
-    max-width: 150px; /* Adjust as needed */
-    height: auto; /* Maintains aspect ratio */
-  }
-  
+  padding: 20px;
+}
+
+.image-grid-container {
+  margin: 0 auto; /* Centers the grid horizontally */
+  transform: scale(0.5); /* Scales down the grid container */
+  transform-origin: top left; /* Ensures scaling starts from the top left */
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* 9 columns of equal width */
+  grid-template-rows: repeat(10, 150px); /* 6 rows of 150px height */
+  gap: 10px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-image {
+  grid-column: 1; /* All skill images are in the first column */
+}
+
+.image-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%; /* Ensures button takes full cell width */
+  height: 100%; /* Ensures button takes full cell height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zag-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images cover the button without distortion */
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: rgb(218, 130, 130);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.popup-content button {
+  margin-top: 10px;
+}
+
+/* ZagPlanner.css */
+
+
+.image-button.highlighted {
+  border: 2px solid #f00; /* Red border for highlighted button */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Optional shadow */
+}
+
